@@ -1,0 +1,227 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Mira's Kingshot Hub</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: one frosted profile card centered on a lilac field; avatar → name → kingdom pill → stat row → stacked pill links → footer notes */
+:root {
+  --field: #f5f1f0;
+  --card: rgba(255,255,255,.78);
+  --ink: #2f1f33;
+  --muted: #8a7a8c;
+  --line: #ebe3e9;
+  --accent: #4b2e52;
+  --accent-soft: #e7dce6;
+  --accent-deep: #3b2341;
+  --display: "Cinzel", "Trajan Pro", Georgia, serif;
+  --body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html, body { min-height: 100%; }
+body {
+  margin: 0;
+  background:
+    radial-gradient(60rem 40rem at 15% -10%, #ebe1ea 0%, transparent 60%),
+    radial-gradient(50rem 36rem at 110% 110%, #f8e2d5 0%, transparent 60%),
+    var(--field);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 15px;
+  line-height: 1.5;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 40px 48px;
+  display: flex;
+  justify-content: center;
+}
+.card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--card);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,.9);
+  border-radius: 28px;
+  box-shadow: 0 24px 60px -24px rgba(75,46,82,.35), 0 2px 6px rgba(75,46,82,.06);
+  padding: 32px 22px 26px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+}
+.eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.avatar {
+  width: 132px; height: 132px;
+  border-radius: 50%;
+  padding: 5px;
+  background: conic-gradient(from 210deg, #a78cab, var(--accent), #e7dce6, #a78cab);
+  box-shadow: 0 14px 30px -12px rgba(75,46,82,.5);
+}
+.avatar-inner {
+  width: 100%; height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #ffffff, #faf6f9 70%);
+  display: grid; place-items: center;
+  border: 4px solid #fff;
+}
+.avatar svg { width: 64px; height: 64px; }
+.who { display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; }
+h1 {
+  margin: 0;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 40px;
+  letter-spacing: .32em;
+  margin-right: -.32em; /* optical centering for tracked caps */
+  line-height: 1;
+}
+.tagline {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.blurb { margin: 2px 0 0; font-size: 14px; color: var(--muted); }
+.kingdom {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 7px 16px;
+  border-radius: 999px;
+  box-shadow: 0 6px 16px -6px rgba(75,46,82,.6);
+}
+.kingdom svg { width: 15px; height: 15px; }
+.stats {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border-block: 1px solid var(--line);
+  padding-block: 14px;
+}
+.stat { text-align: center; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.stat + .stat { border-left: 1px solid var(--line); }
+.stat span { font-size: 11px; color: var(--muted); letter-spacing: .04em; }
+.stat b { font-size: 19px; font-weight: 700; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.links { width: 100%; display: flex; flex-direction: column; gap: 12px; margin: 0; padding: 0; list-style: none; }
+.pill {
+  display: flex; align-items: center; gap: 14px;
+  width: 100%;
+  padding: 14px 16px 14px 14px;
+  border-radius: 999px;
+  background: linear-gradient(120deg, #ffffff 0%, var(--accent-soft) 100%);
+  border: 1px solid #ddd0dc;
+  box-shadow: 0 8px 20px -14px rgba(75,46,82,.45);
+  color: var(--ink);
+  text-decoration: none;
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease;
+}
+.pill:hover { transform: translateY(-2px); border-color: #c6b1c7; box-shadow: 0 12px 24px -14px rgba(75,46,82,.55); }
+.pill:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.pill .ico {
+  flex: none;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  display: grid; place-items: center;
+}
+.pill .ico svg { width: 22px; height: 22px; }
+.pill .txt { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.pill .txt strong { font-size: 16px; font-weight: 700; }
+.pill .txt small { font-size: 12.5px; color: var(--muted); }
+.pill .chev { flex: none; color: var(--accent); width: 18px; height: 18px; }
+.pill.featured { background: linear-gradient(120deg, #6b4a72, var(--accent-deep)); border-color: transparent; color: #fff; }
+.pill.featured .ico { background: rgba(255,255,255,.2); color: #fff; }
+.pill.featured .txt small { color: rgba(255,255,255,.82); }
+.pill.featured .chev { color: #fff; }
+.notes { display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; padding-top: 4px; }
+.notes p { margin: 0; font-size: 13px; color: var(--muted); }
+.notes p:last-child { color: var(--accent-deep); font-weight: 600; }
+.notes a.jeabs { color: var(--accent-deep); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; text-decoration-color: #a78cab; }
+.notes a.jeabs:hover { text-decoration-color: var(--accent-deep); }
+.notes a.jeabs:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+@media (prefers-reduced-motion: reduce) { .pill { transition: none; } .pill:hover { transform: none; } }
+@media (max-width: 380px) { h1 { font-size: 34px; } .card { padding-inline: 16px; } }
+</style>
+
+<main class="card">
+  <div class="eyebrow">Kingshot · Player Profile</div>
+
+  <div class="avatar" aria-hidden="true">
+    <div class="avatar-inner">
+      <svg viewBox="0 0 64 64" fill="none">
+        <path d="M10 46 L14 20 L24 32 L32 14 L40 32 L50 20 L54 46 Z" fill="#4b2e52"/>
+        <rect x="10" y="46" width="44" height="7" rx="2" fill="#3b2341"/>
+        <circle cx="14" cy="18" r="3.5" fill="#a78cab"/>
+        <circle cx="32" cy="12" r="4" fill="#a78cab"/>
+        <circle cx="50" cy="18" r="3.5" fill="#a78cab"/>
+        <circle cx="32" cy="38" r="4" fill="#f6c3a7"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="who">
+    <h1 id="name">MIRA</h1>
+    <div class="kingdom">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V9l4 2V5l4 3 4-3v6l4-2v12z"/><path d="M10 21v-5h4v5"/></svg>
+      <span id="kingdom">Kingdom #1551</span>
+    </div>
+    <p class="blurb">hope you like the random shit i built &lt;3</p>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><span>Projects</span><b>2</b></div>
+    <div class="stat"><span>Player ID</span><b id="pid">221330479</b></div>
+  </div>
+
+  <ul class="links" id="links"></ul>
+
+  <div class="notes">
+    <p>feedback or ideas? feel free in game</p>
+    <p>like what you see? glaze me on <a class="jeabs" href="https://jeabslist.com/player/221330479" target="_blank" rel="noopener">jeabs</a>!</p>
+  </div>
+</main>
+
+<script>
+/* ===== Edit these to update the page ===== */
+const CONFIG = {
+  kingdom: "Kingdom #1551",
+  links: [
+    { title: "Truegold Calendar Planner", sub: "Weekly refinement calendar", url: "https://mirakingshot.github.io/tgcalendar/", icon: "cal" },
+    { title: "KS Value Guide", sub: "Pack, shop & item valuations", url: "https://mirakingshot.github.io/ks-value-guide", icon: "gem" }
+  ]
+};
+/* ========================================== */
+
+const ICONS = {
+  gem:  '<path d="M6 3h12l3 6-9 12L3 9z"/><path d="M3 9h18M12 21 8 9l4-6 4 6z"/>',
+  list: '<path d="M8 6h13M8 12h13M8 18h13"/><circle cx="4" cy="6" r="1"/><circle cx="4" cy="12" r="1"/><circle cx="4" cy="18" r="1"/>',
+  shop: '<path d="M4 10v10h16V10"/><path d="M2 10l2-6h16l2 6"/><path d="M2 10a3.3 3.3 0 0 0 6.6 0 3.3 3.3 0 0 0 6.7 0 3.3 3.3 0 0 0 6.7 0"/><path d="M10 20v-5h4v5"/>',
+  gift: '<rect x="3" y="8" width="18" height="4" rx="1"/><path d="M5 12v9h14v-9M12 8v13"/><path d="M12 8c-2-4-6-4-6-1.5S9 8 12 8c3 0 6-.5 6-1.5S14 4 12 8z"/>',
+  cal:  '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="m9 15 2 2 4-4"/>'
+};
+const svg = d => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
+
+document.getElementById("kingdom").textContent = CONFIG.kingdom;
+document.getElementById("links").innerHTML = CONFIG.links.map(l => `
+  <li><a class="pill${l.featured ? " featured" : ""}" href="${l.url}" target="_blank" rel="noopener">
+    <span class="ico">${svg(ICONS[l.icon] || ICONS.gem)}</span>
+    <span class="txt"><strong>${l.title}</strong><small>${l.sub}</small></span>
+    <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
+  </a></li>`).join("");
+</script>
+
+</body></html>
